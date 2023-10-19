@@ -25,6 +25,7 @@
   overflow: scroll;
   margin: 0;
 }
+
 .card {
   display: flex;
   justify-content: space-between;

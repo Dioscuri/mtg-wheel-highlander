@@ -16,7 +16,7 @@ type CardData = {
 
 // Props so that we can access the object without listing all fields 
 // In the child component
-type CardDataProps = {
+type CardProps = {
     card_data:CardData
 }
-export {CardData, CardDataProps}
+export {CardData, CardProps}

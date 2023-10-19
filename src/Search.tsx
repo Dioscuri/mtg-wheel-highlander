@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from 'react';
 
 import { CardData } from './types';
 import Card from './Card.tsx';
-import { useDeck } from './DeckContext.tsx';
 
 const WAIT_TIME = 65;
 
@@ -13,9 +12,6 @@ function Search() {
     const [searchResults, setSearchResults] = useState(Array<CardData>)
     const [searchInput, setSearchInput] = useState("")
     const inputTimer = useRef<NodeJS.Timeout|null>(null)
-
-    // CONTEXT
-    const deck = useDeck()
 
     // USE EFFECTS 
     // ON CHANGE IN INPUT
@@ -28,14 +24,13 @@ function Search() {
         // Set a timer before calling the API to get the auto-completed list
         inputTimer.current = setTimeout(() => {
             autoFillList()
-        },WAIT_TIME)
+        },WAIT_TIME * 5)
 
     },[searchInput])
 
     // HELPER FUNCTIONS
     function autoFillList(){
         if (searchInput != ""){
-
             const input_string = searchInput
 
             fetch(`https://api.scryfall.com/cards/autocomplete?q=${input_string}`)
@@ -54,7 +49,7 @@ function Search() {
                                 })
                                 .then((data)=>{
                                     let card:CardData = {
-                                        id: data.id,
+                                        id: data.oracle_id,
                                         uri: data.uri,
                                         cmc:data.cmc,
                                         colors:data.colors,
@@ -72,7 +67,9 @@ function Search() {
                 })
                 .catch(err => console.log(err))
         }
-
+        else{
+            setTimeout(() => setSearchResults([]),  WAIT_TIME)
+        }
     }
 
 
@@ -90,7 +87,7 @@ function Search() {
                         <ul>
                             {
                                 searchResults.map((card:CardData)=>{
-                                    return <Card card_data={card}/>
+                                    return <li key={card.id}><Card card_data={card}/></li>
                                 })
                             }
                         </ul>

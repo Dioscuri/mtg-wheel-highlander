@@ -1,9 +1,8 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { CardData } from "./types"
 import React from "react"
-import { useContext } from "react"
 
-const DeckContext = React.createContext<CardData[]>([])
+const DeckContext = React.createContext<Map<string, CardData>>(new Map())
 const DeckUpdateContext = React.createContext<Function>(()=>{})
 
 export function useDeck(){
@@ -15,9 +14,9 @@ export function useDeckUpdate(){
 }
 
 export function DeckProvider({children}){
-    const [deck, setDeck] = useState<CardData[]>([])
+    const [deck, setDeck] = useState<Map<string, CardData>>(new Map())
 
-    function updateDeck(update:CardData[]){
+    function updateDeck(update:Map<string, CardData>){
         setDeck(update)
     }
 
