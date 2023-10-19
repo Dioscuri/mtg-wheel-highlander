@@ -14,7 +14,6 @@ function Card({card_data}:CardDataProps) {
       <div className='card'>
         <div className="card-info">
             <p>{card_data.name}</p>
-            <p>{card_data.type_line}</p>
         </div>
 
         <button onClick={() => updateDeck([...deck, card_data])}> Add to Deck </button>

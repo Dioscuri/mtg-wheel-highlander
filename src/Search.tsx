@@ -19,6 +19,7 @@ function Search() {
 
     // USE EFFECTS 
     // ON CHANGE IN INPUT
+    // TODO: FIX SO THAT EMPTY SEARCH WILL CLEAR THE RESULTS
     useEffect(() => {
         if (inputTimer.current){
             clearTimeout(inputTimer.current)
@@ -76,25 +77,28 @@ function Search() {
 
 
     return (
-        <div className="Search">
-            <input onChange={(e) => setSearchInput(e.target.value)}></input>
-            <button onClick={autoFillList}>Search</button>
+        <div className="search-container">
+            <input 
+                className="search-bar" 
+                placeholder='Search for cards here'
+                onChange={(e) => setSearchInput(e.target.value)}
+            />
+          
             <div>
                 {(searchResults.length != 0) && 
-                    <ul>
-                        {
-                            searchResults.map((card:CardData)=>{
-                                return <Card card_data={card}/>
-                            })
+                    <div>
+                        <ul>
+                            {
+                                searchResults.map((card:CardData)=>{
+                                    return <Card card_data={card}/>
+                                })
+                            }
+                        </ul>
+                        {searchResults.length > 10 &&
+                            <div className='card' style={{fontStyle:"italic", fontSize:"smaller"}}> . . . Scroll for more results </div>
                         }
-                    </ul>}
-            </div>
-            <div>
-                {deck.length > 0 && 
-                    deck.map((card:CardData)=>{
-                        return <div>{card.name}</div>
-                    })
-                }
+                    </div>
+                    }
             </div>
         </div>
     );
