@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  border: solid lightgreen 1px;
+  width: 100%;
+  margin-top: -1px;
+}
+
+.card > button {
+  height: fit-content;
+}
