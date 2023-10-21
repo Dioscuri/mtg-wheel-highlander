@@ -14,9 +14,13 @@ type CardData = {
     image_uris:Object
 }
 
+type DeckData = {
+    id:string, 
+    cards:Map<string, CardData>
+}
 // Props so that we can access the object without listing all fields 
 // In the child component
 type CardProps = {
     card_data:CardData
 }
-export {CardData, CardProps}
+export {CardData, CardProps, DeckData}

@@ -9,6 +9,21 @@
   width: 45%;
 }
 
+.navigation {
+  padding: .65rem;
+  background-color: slategray;
+}
+
+.navigation > * {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+.navigation > *:hover {
+  color: darkslategray;
+}
+
 .search-container {
   width: fit-content;
 }

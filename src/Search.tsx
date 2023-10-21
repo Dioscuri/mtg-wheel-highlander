@@ -48,6 +48,7 @@ function Search() {
                                     return response.json()
                                 })
                                 .then((data)=>{
+                                    console.log(data)
                                     let card:CardData = {
                                         id: data.oracle_id,
                                         uri: data.uri,

@@ -13,8 +13,10 @@ export function useDeckUpdate(){
     return useContext(DeckUpdateContext)
 }
 
-export function DeckProvider({children}){
-    const [deck, setDeck] = useState<Map<string, CardData>>(new Map())
+export function DeckProvider({initial_deck, children}){
+    // Initialize the deck
+
+    const [deck, setDeck] = useState<Map<string, CardData>>(initial_deck.cards)
 
     function updateDeck(update:Map<string, CardData>){
         setDeck(update)
