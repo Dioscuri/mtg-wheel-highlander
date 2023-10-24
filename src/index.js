@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider,
 } from "react-router-dom";
 
@@ -18,6 +19,16 @@ import { decks } from './test_objects.tsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([
+  {
+    index: true,
+    element: <Navigate to={"/home"} replace/>,
+    errorElement: <ErrorBoundary />,
+  },
+  {
+    path:"/home",
+    element:<App/>,
+    errorElement: <ErrorBoundary />,
+  },
   {
     path: "/",
     element: <Navigation/>,
@@ -44,7 +55,7 @@ const router = createBrowserRouter([
       },
       {
         path: "wheels",
-        element: <App/>,
+        element: <div> Placeholder for Wheels page</div>,
         errorElement: <ErrorBoundary />,
       },
     ]

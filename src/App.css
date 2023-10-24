@@ -67,3 +67,29 @@
   border-radius: 2px;
   font-weight: bold;
 }
+
+.personal-deck-container {
+  margin: auto;
+  margin-top: 2rem;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.personal-deck {
+    width: 100%;
+    border: solid lightgrey 1px;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 20%;
+    padding-bottom: 30%;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.personal-deck:hover{
+  filter: drop-shadow(1px 1px 7px gray);
+}
