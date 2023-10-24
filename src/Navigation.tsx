@@ -8,6 +8,7 @@ export function Navigation(){
             <Link to={``}>Home</Link>
             <Link to={`/wheels`}>Your Wheels</Link>
             <Link to={`/decks`}>Your Decks</Link>
+            <Link to={`/new_deck`}> Create New Deck</Link>
         </nav>
         <div>
             <Outlet></Outlet>

@@ -15,6 +15,7 @@ import { PersonalDecks } from './PersonalDecks.tsx';
 import { DeckEditor } from './DeckEditor.tsx';
 
 import { decks } from './test_objects.tsx';
+import { NewDeck } from './NewDeck.tsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
         path: "deck_editor/:deckID",
         element: <DeckEditor/>,
         // TODO: REPLACE THE LOADER WITH ONE THAT GETS THE DECK FROM THE DATABASE
+        // In addition, need to create the Map<string, CardData>
+        //Create an new Map to pass
+        // For now, hit the scryfall API for each card id in the cards array from the database
+        // Use the card id as the string, and get the CardData from the response
+        //TODO: Helper function that automatically gets the CardData from Scryfall's response
         loader: async({params}) => {
           return decks.find((deck) => deck.id == params.deckID)
         },
@@ -56,6 +62,11 @@ const router = createBrowserRouter([
       {
         path: "wheels",
         element: <div> Placeholder for Wheels page</div>,
+        errorElement: <ErrorBoundary />,
+      },
+      {
+        path: "/new_deck",
+        element: <NewDeck/>,
         errorElement: <ErrorBoundary />,
       },
     ]

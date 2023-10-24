@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Search from './Search.tsx';
 import { Navigation } from './Navigation.tsx';
 
 function App() {
