@@ -42,7 +42,7 @@ routes.route("/decks/add").post(function (req, response) {
     name: req.body.deck_name,
     cards: []
     // wheels: req.body.wheel,
-    //user: req.body.user_name
+    // user: req.body.user_name
   };
 
   console.log("/decks/add", req.body)
@@ -60,22 +60,59 @@ routes.route("/decks/add").post(function (req, response) {
   catch (e){
     console.error("Error creating deck: ", e)
   }
+ });
+
+ // Get a deck with the given ID
+routes.route("/decks/:id").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: new ObjectId(req.params.id) };
+
+  console.log("/decks/id", req.params)
+
+  try {
+    db_connect
+      .collection("decks")
+      .findOne(myquery)
+      .then((data) => 
+        {
+          res.json(data)
+        }
+      )
+  }
+  catch (e){
+
+  }
   
+ });
+  
+
+ // When calling this function, 
+ routes.route("/decks/update/cards/:deckID").post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: new ObjectId(req.params.deckID) };
+  let newvalues = {
+    $set: {
+      cards: req.body.cards,
+    },
+  };
+
+  try {
+    db_connect
+    .collection("decks")
+    .findOneAndUpdate(myquery, newvalues, {returnNewDocument:true})
+    .then((data)=>{
+      console.log(data)
+      response.json(data)
+    })
+
+  }
+  catch (e){
+    console.error("Error updating cards: ", e)
+  }
 
  });
  
-/*// This section will help you get a single record by id
-routes.route("/record/:id").get(function (req, res) {
- let db_connect = dbo.getDb();
- let myquery = { _id: ObjectId(req.params.id) };
- db_connect
-   .collection("records")
-   .findOne(myquery, function (err, result) {
-     if (err) throw err;
-     res.json(result);
-   });
-});
- 
+/*
 // This section will help you update a record by id.
 routes.route("/update/:id").post(function (req, response) {
  let db_connect = dbo.getDb();

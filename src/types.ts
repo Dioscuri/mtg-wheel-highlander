@@ -3,6 +3,7 @@
 // And organize properly
 type CardData = {
     id:string,
+    scryfall_id:string,
     uri:string,
     
     cmc:number,

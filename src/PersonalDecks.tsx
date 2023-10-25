@@ -9,10 +9,7 @@ export function PersonalDecks(){
             <div className='personal-deck-container'>
                 {decks.map((deck)=>{
                     const first_card = deck.cards.size == 0  ? null : (deck.cards.values().next().value)
-                    console.log(deck, first_card)
-
                     const first_image_uri = (first_card == null || first_card.image_uris == undefined || first_card.image_uris.art_crop == undefined) ? null : first_card.image_uris.art_crop
-                    console.log(first_image_uri)
 
                     return (
                         <Link 

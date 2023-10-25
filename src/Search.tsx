@@ -2,8 +2,9 @@ import './App.css';
 import React from 'react';
 import { useRef, useState, useEffect } from 'react';
 
-import { CardData } from './types';
+import { CardData } from './types.ts';
 import Card from './Card.tsx';
+import { getCardData } from './helperFunctions.ts';
 
 const WAIT_TIME = 65;
 
@@ -48,17 +49,7 @@ function Search() {
                                     return response.json()
                                 })
                                 .then((data)=>{
-                                    console.log(data)
-                                    let card:CardData = {
-                                        id: data.oracle_id,
-                                        uri: data.uri,
-                                        cmc:data.cmc,
-                                        colors:data.colors,
-                                        name: data.name,
-                                        type_line: data.type_line,
-                                        image_uris: data.image_uris
-                                    }
-                                    results.push(card)
+                                    results.push(getCardData(data))
                                 })
                         , WAIT_TIME) 
                     }

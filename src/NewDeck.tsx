@@ -3,14 +3,12 @@ import { useRef } from "react";
 import { useNavigate } from "react-router";
 
 export function NewDeck() {
-    // I am using useRef in order to prevent re-rendering the DOM
-    // We only need the form info when we submit
     const navigate = useNavigate()
 
     // STATES
     const deck_name = useRef<HTMLInputElement>(null)
-    // const wheels = useRef()
 
+    // FUNCTIONS
     async function onSubmit(e:React.ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         const form = e.target;
@@ -27,7 +25,10 @@ export function NewDeck() {
         try {
             fetch("http://localhost:5001/decks/add", options)
                 .then((response) =>response.json()) 
-                .then((data) => console.log(data))
+                .then((data) => {
+                    console.log(data)
+                    navigate(`/deck_editor/${data.insertedId}`);
+                })
                 .catch(error => {
                     window.alert(error);
                     return;
@@ -37,9 +38,6 @@ export function NewDeck() {
             window.alert(e);
             return;
         }
-        
-
-        navigate("/new_deck");
     }
 
     return (
