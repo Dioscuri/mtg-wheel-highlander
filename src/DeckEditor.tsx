@@ -8,7 +8,7 @@ export function DeckEditor(){
     const loadedData:any = useLoaderData() //TODO: Define return type    
 
     return (
-        <div>
+        <div style={{marginTop:"1rem"}}>
             <div className="deck-editor-header">
                 <h2 style={{textTransform:"uppercase"}}> {loadedData.name}</h2>
                 <h3> User Name </h3>

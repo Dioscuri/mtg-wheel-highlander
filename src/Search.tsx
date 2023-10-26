@@ -73,7 +73,7 @@ function Search() {
                 onChange={(e) => setSearchInput(e.target.value)}
             />
           
-            <div>
+            <div style={{marginTop: "1px"}}>
                 {(searchResults.length != 0) && 
                     <div>
                         <ul>
