@@ -9,7 +9,10 @@ export function DeckEditor(){
 
     return (
         <div>
-            <h3 style={{width:"100%", textAlign:"center"}}> {loadedData.name}</h3>
+            <div className="deck-editor-header">
+                <h2 style={{textTransform:"uppercase"}}> {loadedData.name}</h2>
+                <h3> User Name </h3>
+            </div>
             <div className="App">
                 
                 <DeckProvider loadedData={loadedData}>

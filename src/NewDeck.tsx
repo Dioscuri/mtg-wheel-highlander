@@ -42,13 +42,15 @@ export function NewDeck() {
 
     return (
         <form className="new-deck-form" onSubmit={onSubmit}>
+            <h3> Add Deck </h3>
+            <label htmlFor="new-deck-name"> Name </label>
             <input 
                 id = "new-deck-name"
                 name="deck_name"
                 placeholder="Deck Name"
                 ref={deck_name}
             />
-            <label htmlFor="new-deck-name"> Name </label>
+            
 
             {/*<input 
                 id ="wheel-selection"
@@ -57,7 +59,7 @@ export function NewDeck() {
             <label htmlFor="wheel-selection"> TODO: Wheel Selection </label>
             */}
 
-            <input type={"submit"} value="Create New Deck"/>
+            <input className="submit-button" type={"submit"} value="Create New Deck"/>
         </form>
     )
 }

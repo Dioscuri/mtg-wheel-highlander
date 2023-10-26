@@ -14,10 +14,6 @@ import { Navigation } from './Navigation.tsx';
 import { PersonalDecks } from './PersonalDecks.tsx';
 import { DeckEditor } from './DeckEditor.tsx';
 import { NewDeck } from './NewDeck.tsx';
-import { decks } from './test_objects.tsx';
-
-import { CardData } from './types.ts';
-import { getCardData } from './helperFunctions.ts';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

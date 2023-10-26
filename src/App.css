@@ -1,3 +1,5 @@
+@import url("./theme.css");
+
 .App {
   text-align: center;
   display: flex;
@@ -11,18 +13,36 @@
 
 .navigation {
   padding: .65rem;
-  background-color: slategray;
+  background-color: var(--dark-theme-color);
 }
 
 .navigation > * {
   color: white;
   margin: 0 1rem;
+  padding-bottom: .25rem;
   text-decoration: none;
+  font-weight: bold;
+  border-bottom: solid var(--theme-color) 2px;
+  border-bottom-width: 0px ;
+  transition: border-bottom-width 0.2s ease;
 }
 
 .navigation > *:hover {
-  color: darkslategray;
+  position: relative;
+  color: var(--theme-color);
+  border-bottom-width: 3px;
 }
+
+.navigation > *:after {
+  content: '';
+  display: none;
+  margin: auto;
+  height: 3px;
+  width: 0px;
+  background: transparent;
+  transition: width .5s ease;
+}
+
 
 .search-container {
   width: fit-content;
@@ -47,9 +67,10 @@
   align-items: center;
   height: 1.5rem;
   text-align: left;
-  border: solid lightgray 2px;
+  border: solid var(--theme-color) 2px;
   margin-top: -2px;
   padding: .25rem .5rem;
+  background-color: white;
 }
 
 .card p {
@@ -61,11 +82,18 @@
   height: fit-content;
   margin-right: 1px;
   font-size: smaller;
-  background-color: lightseagreen;
+  background-color: var(--mid-theme-color);
   color: white;
-  border: solid lightseagreen 1px;
+  border: solid var(--mid-theme-color) 2px;
   border-radius: 2px;
   font-weight: bold;
+}
+
+.card button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: var(--mid-theme-color);
+
 }
 
 .personal-deck-container {
@@ -80,9 +108,10 @@
 
 .personal-deck {
     width: 100%;
-    border: solid lightgrey 1px;
+    border: solid white 2px;
     border-radius: 5px;
     text-align: center;
+    margin: 1rem 0;
     padding-top: 20%;
     padding-bottom: 30%;
     color: white;
@@ -91,5 +120,67 @@
 }
 
 .personal-deck:hover{
-  filter: drop-shadow(1px 1px 7px gray);
+  filter: drop-shadow(1px 1px 7px var(--mid-theme-color));
+}
+
+.deck-editor-header {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: fit-content;
+  padding: 1rem;
+  color: var(--mid-theme-color);
+}
+
+.deck-editor-header > * {
+  margin: 1rem 5%;
+}
+
+.new-deck-form {
+  background-color: white;
+  margin: auto;
+  margin-top: 2rem;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 5px;
+  position: relative;
+  outline: white 3px solid;
+  outline-offset: 5px;
+}
+
+.new-deck-form > input:not(:last-child) {
+  margin-top: .5rem;
+  padding: 0.25rem;
+  outline-color: var(--mid-theme-color)
+}
+
+.new-deck-form > h3 {
+  margin-top:0; 
+  padding-bottom: .5rem;
+  color: var(--mid-theme-color);
+  border-bottom: solid 3px lightgrey;
+}
+
+.submit-button {
+  background-color: var(--mid-theme-color);
+  color: white;
+  outline: none;
+  border: none;
+  width: 40%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  font-weight: bold;
+
+  transition: background-color .2s ease, color .1s ease;
+
+}
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: var(--accent-theme-color);
+  color: var(--mid-theme-color);
+  outline: 1px solid var(--mid-theme-color);
 }

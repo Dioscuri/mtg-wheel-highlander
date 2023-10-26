@@ -1,9 +1,33 @@
-import {decks} from './test_objects.tsx'
 import React from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './App.css'
 
 export function PersonalDecks(){
+    const [decks, setDecks] = useState<Array<any>>([])
+    
+    // Initialize the deck
+    useEffect(() => {
+        fetch(`http://localhost:5001/decks`)
+            .then((response) =>response.json()) 
+            .then((data)=>{
+                let results:Array<any> = []
+
+                data.map((deck) => {
+                    results.push({
+                        name: deck.name,
+                        id: deck._id,
+                        cards: []
+                    })
+                })
+
+                setDecks(results)
+            })
+
+            
+        }, []) 
+    
+        
     return (
         <>
             <div className='personal-deck-container'>
@@ -15,9 +39,11 @@ export function PersonalDecks(){
                         <Link 
                             className='personal-deck' 
                             style={{
-                                background: (first_image_uri == null) ? "linear-gradient(rgb(0,0,0, .9),rgb(0,0,0, .75), gray)" : `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url(${first_image_uri})`
+                                background: (first_image_uri == null) ? "white" : `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url(${first_image_uri})`,
+                                color: (first_image_uri == null) ? "var(--dark-theme-color)" : "white",
+
                             }}
-                            to={`/deck_editor/${deck.id}`}> {deck.id} 
+                            to={`/deck_editor/${deck.id}`}> {deck.name} 
                         </Link>
                     )
                 })}
