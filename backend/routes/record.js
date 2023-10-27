@@ -111,28 +111,27 @@ routes.route("/decks/:id").get(function (req, res) {
   }
 
  });
+
+// WHEEL ROUTES 
+routes.route("/wheels").get(function (req, res) {
+  let db_connect = dbo.getDb("mtgWheelHighlander");
+ 
+  try {
+     db_connect
+       .collection("wheels")
+       .find({})
+       .toArray()
+       .then((data) => {
+         console.log(data);
+         res.json(data)
+       });
+   }
+   catch (e){
+     console.error("Error pulling decks: ", e)
+   }
+ });
  
 /*
-// This section will help you update a record by id.
-routes.route("/update/:id").post(function (req, response) {
- let db_connect = dbo.getDb();
- let myquery = { _id: ObjectId(req.params.id) };
- let newvalues = {
-   $set: {
-     name: req.body.name,
-     position: req.body.position,
-     level: req.body.level,
-   },
- };
- db_connect
-   .collection("records")
-   .updateOne(myquery, newvalues, function (err, res) {
-     if (err) throw err;
-     console.log("1 document updated");
-     response.json(res);
-   });
-});
- 
 // This section will help you delete a record
 routes.route("/:id").delete((req, response) => {
  let db_connect = dbo.getDb();
