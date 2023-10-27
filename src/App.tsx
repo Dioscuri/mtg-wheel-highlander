@@ -21,13 +21,18 @@ function App() {
             <h2 style={{fontStyle:"italic", fontWeight:"normal", marginTop:0}}> 
                 No such thing as too many cards. 
             </h2>
-            <button onClick={test}> Database Connection Test</button>
             <Link className="default-button" to={`/about`}> Find Out More </Link>
 
         </div>
 
-        <div style={{zIndex: 100, position:"relative", height:"1800px", border:"solid 1px red"}}>
-            Test Bottom
+        <div style={{
+            zIndex: 100, 
+            position:"relative", 
+            height:"1800px", 
+            borderTop:"solid 2px white", 
+            backgroundColor:"var(--dark-theme-color)",
+            color: "white",
+        }}>
         </div>
     </div>
   );
